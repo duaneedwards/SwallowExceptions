@@ -7,7 +7,7 @@ namespace SwallowExceptions.Fody
         public AttributeFinder(MethodDefinition method)
         {
             var customAttributes = method.CustomAttributes;
-            if (customAttributes.ContainsAttribute("SwallowExceptions.Fody.SwallowExceptionAttribute"))
+            if (customAttributes.ContainsAttribute("SwallowExceptions.Fody.SwallowExceptionsAttribute"))
             {
                 Swallow = true;
             }
