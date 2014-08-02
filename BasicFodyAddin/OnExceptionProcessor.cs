@@ -46,14 +46,14 @@ namespace BasicFodyAddin.Fody
             };
             returnFixer.MakeLastStatementReturn();
 
-            var tryCatchLeaveInstructions = Instruction.Create(OpCodes.Leave, returnFixer.NopBeforeReturn);
-            var tryCatchLeaveInstructions2 = Instruction.Create(OpCodes.Leave, returnFixer.NopBeforeReturn);
+            var tryBlockLeaveInstructions = Instruction.Create(OpCodes.Leave, returnFixer.NopBeforeReturn);
+            var catchBlockLeaveInstructions = Instruction.Create(OpCodes.Leave, returnFixer.NopBeforeReturn);
 
             var methodBodyFirstInstruction = GetMethodBodyFirstInstruction();
 
-            var catchInstructions = GetCatchInstructions(tryCatchLeaveInstructions2).ToList();
+            var catchInstructions = GetCatchInstructions(catchBlockLeaveInstructions).ToList();
 
-            ilProcessor.InsertBefore(returnFixer.NopBeforeReturn, tryCatchLeaveInstructions);
+            ilProcessor.InsertBefore(returnFixer.NopBeforeReturn, tryBlockLeaveInstructions);
 
             ilProcessor.InsertBefore(returnFixer.NopBeforeReturn, catchInstructions);
 
@@ -61,7 +61,7 @@ namespace BasicFodyAddin.Fody
             {
                 CatchType = ModuleWeaver.ExceptionType,
                 TryStart = methodBodyFirstInstruction,
-                TryEnd = tryCatchLeaveInstructions.Next,
+                TryEnd = tryBlockLeaveInstructions.Next,
                 HandlerStart = catchInstructions.First(),
                 HandlerEnd = catchInstructions.Last().Next
             };
