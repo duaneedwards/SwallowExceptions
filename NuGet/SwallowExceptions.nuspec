@@ -11,7 +11,7 @@
     <projectUrl>https://github.com/duaneedwards/SwallowExceptions</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <iconUrl>https://raw.githubusercontent.com/duaneedwards/SwallowExceptions/master/Icons/package_icon.png</iconUrl>
-    <description>A Fody plugin that allows you to annotate a method with the [SwallowExceptions] attribute to have the method contents wrapped in a try / catch block</description>
+    <description>A Fody plugin that allows you to annotate a method with the [SwallowExceptions] attribute to have the method contents wrapped in a try / catch block.</description>
     <summary />
     <language>en-AU</language>
     <tags>ILWeaving, Fody, Cecil</tags>
