@@ -10,13 +10,9 @@ namespace BasicFodyAddin.Fody
     public class OnExceptionProcessor
     {
         public MethodDefinition Method;
-        public FieldReference LoggerField;
         public ModuleWeaver ModuleWeaver;
         MethodBody body;
 
-        VariableDefinition paramsArrayVariable;
-        VariableDefinition messageVariable;
-        VariableDefinition exceptionVariable;
         AttributeFinder attributeFinder;
 
         public void Process()
@@ -51,19 +47,19 @@ namespace BasicFodyAddin.Fody
 
             var methodBodyFirstInstruction = GetMethodBodyFirstInstruction();
 
-            var catchInstructions = GetCatchInstructions(catchBlockLeaveInstructions).ToList();
+            var catchBlockInstructions = GetCatchInstructions(catchBlockLeaveInstructions).ToList();
 
             ilProcessor.InsertBefore(returnFixer.NopBeforeReturn, tryBlockLeaveInstructions);
 
-            ilProcessor.InsertBefore(returnFixer.NopBeforeReturn, catchInstructions);
+            ilProcessor.InsertBefore(returnFixer.NopBeforeReturn, catchBlockInstructions);
 
             var handler = new ExceptionHandler(ExceptionHandlerType.Catch)
             {
                 CatchType = ModuleWeaver.ExceptionType,
                 TryStart = methodBodyFirstInstruction,
                 TryEnd = tryBlockLeaveInstructions.Next,
-                HandlerStart = catchInstructions.First(),
-                HandlerEnd = catchInstructions.Last().Next
+                HandlerStart = catchBlockInstructions.First(),
+                HandlerEnd = catchBlockInstructions.Last().Next
             };
 
             body.ExceptionHandlers.Add(handler);
@@ -81,25 +77,12 @@ namespace BasicFodyAddin.Fody
             return body.Instructions.First();
         }
 
-        IEnumerable<Instruction> GetCatchInstructions(Instruction tryCatchLeaveInstructions)
+        IEnumerable<Instruction> GetCatchInstructions(Instruction catchBlockLeaveInstructions)
         {
             yield return Instruction.Create(OpCodes.Pop);
             yield return Instruction.Create(OpCodes.Nop);
             yield return Instruction.Create(OpCodes.Nop);
-            yield return tryCatchLeaveInstructions;
-        }
-
-        IEnumerable<Instruction> AddWrite(MethodReference writeMethod, MethodReference isEnabledMethod)
-        {
-            var sectionNop = Instruction.Create(OpCodes.Nop);
-            yield return Instruction.Create(OpCodes.Ldsfld, LoggerField);
-            yield return Instruction.Create(OpCodes.Callvirt, isEnabledMethod);
-            yield return Instruction.Create(OpCodes.Brfalse_S, sectionNop);
-            yield return Instruction.Create(OpCodes.Ldsfld, LoggerField);
-            yield return Instruction.Create(OpCodes.Ldloc, messageVariable);
-            yield return Instruction.Create(OpCodes.Ldloc, exceptionVariable);
-            yield return Instruction.Create(OpCodes.Callvirt, writeMethod);
-            yield return sectionNop;
+            yield return catchBlockLeaveInstructions;
         }
     }
 }
