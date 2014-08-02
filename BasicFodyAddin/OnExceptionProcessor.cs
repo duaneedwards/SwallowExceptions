@@ -46,14 +46,6 @@ namespace BasicFodyAddin.Fody
             };
             returnFixer.MakeLastStatementReturn();
 
-            exceptionVariable = new VariableDefinition(ModuleWeaver.ExceptionType);
-            body.Variables.Add(exceptionVariable);
-            messageVariable = new VariableDefinition(ModuleWeaver.ModuleDefinition.TypeSystem.String);
-            body.Variables.Add(messageVariable);
-            paramsArrayVariable = new VariableDefinition(ModuleWeaver.ObjectArray);
-            body.Variables.Add(paramsArrayVariable);
-
-
             var tryCatchLeaveInstructions = Instruction.Create(OpCodes.Leave, returnFixer.NopBeforeReturn);
             var tryCatchLeaveInstructions2 = Instruction.Create(OpCodes.Leave, returnFixer.NopBeforeReturn);
 
