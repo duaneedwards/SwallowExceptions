@@ -58,7 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="AsyncChecker.cs" />
     <Compile Include="AttributeFinder.cs" />
     <Compile Include="CecilExtensions.cs" />
     <Compile Include="MockAssemblyResolver.cs" />

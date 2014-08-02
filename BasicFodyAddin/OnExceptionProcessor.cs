@@ -27,7 +27,6 @@ namespace BasicFodyAddin.Fody
             {
                 return;
             }
-            //Method.ThrowIfIsAsync();
 
             ContinueProcessing();
         }
