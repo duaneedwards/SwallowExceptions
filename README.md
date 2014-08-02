@@ -31,8 +31,6 @@ public class MyClass
 ```
 public class MyClass
 {
-    static Logger logger = LogManager.GetLogger("MyClass");
-
     void MyMethod()
     {
       try
@@ -45,3 +43,63 @@ public class MyClass
       }
     }
 }
+```
+
+### Working alongside other Fody Plugins
+
+In the case of other attribute based Fody plugins, i.e. Anotar, the order that the plugins get invoked becomes important.
+
+In most cases you'd like this plugin to be the last plugin to inject code into a method, to do so ensure that it is the last plugin listed in the project's FodyWeavers.xml file like shown here:
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<Weavers>
+  <Anotar.Log4Net />
+  <SwallowExceptions />
+</Weavers>
+
+```
+
+In this case, you can do things like the following, where Anotar will log the exception, then SwallowExceptions will catch the rethrown exception:
+
+```
+public class MyClass
+{
+    [LogToFatalOnException, SwallowExceptions]
+    void MyMethod()
+    {
+      DoSomethingDangerous();
+    }
+}
+```
+
+### What gets compiled
+
+```
+public class MyClass
+{
+    void MyMethod()
+    {
+      try
+      {
+        try
+        {
+            DoSomethingDangerous();
+        }
+        catch (Exception exception)
+        {
+            if (logger.IsErrorEnabled)
+            {
+                var message = string.Format("Exception occurred in SimpleClass.MyMethod. param1 '{0}', param2 '{1}'", param1, param2);
+                logger.ErrorException(message, exception);
+            }
+            throw;
+        }
+      }
+      catch (Exception exception)
+      {
+      
+      }
+    }
+}
+```
