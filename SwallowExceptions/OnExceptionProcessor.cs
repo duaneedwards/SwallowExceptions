@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
 using Mono.Cecil.Rocks;
 
-namespace BasicFodyAddin.Fody
+namespace SwallowExceptions.Fody
 {
     public class OnExceptionProcessor
     {

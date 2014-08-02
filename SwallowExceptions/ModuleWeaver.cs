@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Linq;
-using BasicFodyAddin.Fody;
 using Mono.Cecil;
-using Mono.Cecil.Rocks;
-using Mono.Cecil.Cil;
+using SwallowExceptions.Fody;
 
 public class ModuleWeaver
 {

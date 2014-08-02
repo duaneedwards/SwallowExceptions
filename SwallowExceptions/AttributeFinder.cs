@@ -1,13 +1,13 @@
 ﻿using Mono.Cecil;
 
-namespace BasicFodyAddin.Fody
+namespace SwallowExceptions.Fody
 {
     public class AttributeFinder
     {
         public AttributeFinder(MethodDefinition method)
         {
             var customAttributes = method.CustomAttributes;
-            if (customAttributes.ContainsAttribute("BasicFodyAddin.Fody.SwallowExceptionAttribute"))
+            if (customAttributes.ContainsAttribute("SwallowExceptions.Fody.SwallowExceptionAttribute"))
             {
                 Swallow = true;
             }

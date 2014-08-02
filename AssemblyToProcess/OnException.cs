@@ -1,6 +1,6 @@
 ﻿
 using System;
-using BasicFodyAddin.Fody;
+using SwallowExceptions.Fody;
 
 namespace AssemblyToProcess
 {
