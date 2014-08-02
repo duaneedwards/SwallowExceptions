@@ -63,7 +63,6 @@
     <Compile Include="MockAssemblyResolver.cs" />
     <Compile Include="ModuleWeaver.cs" />
     <Compile Include="OnExceptionProcessor.cs" />
-    <Compile Include="ParamsFormatBuilder.cs" />
     <Compile Include="ReturnFixer.cs" />
     <Compile Include="WeaverHelper.cs" />
     <Compile Include="WeavingException.cs" />
