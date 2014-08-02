@@ -8,8 +8,8 @@
     <ProjectGuid>{C2F28BB8-61E1-4B1D-B578-41EE6F7AF173}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SwallowExceptionReferenceAssembly</RootNamespace>
-    <AssemblyName>SwallowExceptionReferenceAssembly</AssemblyName>
+    <RootNamespace>SwallowExceptions</RootNamespace>
+    <AssemblyName>SwallowExceptions</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
