@@ -63,9 +63,9 @@
       <Project>{e97e649f-b703-47e3-b18a-0871d3498742}</Project>
       <Name>AssemblyToProcess</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BasicFodyAddin\BasicFodyAddin.csproj">
+    <ProjectReference Include="..\BasicFodyAddin\SwallowExceptions.csproj">
       <Project>{C3578A7B-09A6-4444-9383-0DEAFA4958BD}</Project>
-      <Name>BasicFodyAddin</Name>
+      <Name>SwallowExceptions</Name>
     </ProjectReference>
     <ProjectReference Include="..\SwallowExceptionReferenceAssembly\SwallowExceptionReferenceAssembly.csproj">
       <Project>{c2f28bb8-61e1-4b1d-b578-41ee6f7af173}</Project>

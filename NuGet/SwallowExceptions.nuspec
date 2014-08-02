@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata minClientVersion="2.8">
-    <id>BasicFodyAddin.Fody</id>
+    <id>SwallowExceptions.Fody</id>
     <version>$version$</version>
-    <title>BasicFodyAddin.Fody</title>
-    <authors>Simon Cropp</authors>
-    <owners>Simon Cropp</owners>
+    <title>SwallowExceptions.Fody</title>
+    <authors>Duane Edwards</authors>
+    <owners>Duane Edwards</owners>
     <developmentDependency>true</developmentDependency>
     <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
-    <projectUrl>http://github.com/Fody/BasicFodyAddin</projectUrl>
+    <projectUrl>https://github.com/duaneedwards/SwallowExceptions</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <iconUrl>https://raw.github.com/Fody/BasicFodyAddin/master/Icons/package_icon.png</iconUrl>
-    <description>A sample Fody add-in.</description>
+    <iconUrl>https://raw.githubusercontent.com/duaneedwards/SwallowExceptions/master/Icons/package_icon.png</iconUrl>
+    <description>A Fody plugin that allows you to annotate a method with the [SwallowExceptions] attribute to have the method contents wrapped in a try / catch block</description>
     <summary />
     <language>en-AU</language>
     <tags>ILWeaving, Fody, Cecil</tags>
