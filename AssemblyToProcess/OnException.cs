@@ -7,7 +7,12 @@ namespace AssemblyToProcess
     public class OnException
     {
         [SwallowException]
-        public void AnnotatedMethod()
+        public void AnnotatedMethodShouldntThrow()
+        {
+            throw new Exception("Testing");
+        }
+
+        public void UnannotatedMethodShouldThrow()
         {
             throw new Exception("Testing");
         }

@@ -26,14 +26,22 @@ public class WeaverTests
     }
 
     [Test]
-    public void ValidateMarkerInterfaceAdded()
+    public void ValidateAnnotationAddsTryCatchBlock()
     {
-        var type = assembly.GetType("AssemblyToProcess.AddressDTO");
+        var type = assembly.GetType("AssemblyToProcess.OnException");
 
-        var expectedInterface = type.GetInterface("IDTOMarkerInterface");
-
-        Assert.IsNotNull(expectedInterface);
+        var instance = (dynamic)Activator.CreateInstance(type);
+        Assert.DoesNotThrow(() => instance.AnnotatedMethodShouldntThrow());
     }
+
+    [Test]
+    public void ValidateLeavesUnannotatedMethodsAlone()
+    {
+        var type = assembly.GetType("AssemblyToProcess.OnException");
+        var instance = (dynamic)Activator.CreateInstance(type);
+        Assert.Throws<Exception>(() => instance.UnannotatedMethodShouldThrow());
+    }
+
 
 #if(DEBUG)
     [Test]

@@ -39,9 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddressDTO.cs" />
     <Compile Include="OnException.cs" />
-    <Compile Include="PersonDTO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SwallowExceptionReferenceAssembly\SwallowExceptionReferenceAssembly.csproj">

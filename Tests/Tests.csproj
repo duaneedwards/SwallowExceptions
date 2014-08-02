@@ -59,14 +59,17 @@
     <Compile Include="WeaverTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AssemblyToProcess\AssemblyToProcess.csproj">
+      <Project>{e97e649f-b703-47e3-b18a-0871d3498742}</Project>
+      <Name>AssemblyToProcess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BasicFodyAddin\BasicFodyAddin.csproj">
       <Project>{C3578A7B-09A6-4444-9383-0DEAFA4958BD}</Project>
       <Name>BasicFodyAddin</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AssemblyToProcess\AssemblyToProcess.csproj">
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-      <Project>{E97E649F-B703-47E3-B18A-0871D3498742}</Project>
-      <Name>AssemblyToProcess</Name>
+    <ProjectReference Include="..\SwallowExceptionReferenceAssembly\SwallowExceptionReferenceAssembly.csproj">
+      <Project>{c2f28bb8-61e1-4b1d-b578-41ee6f7af173}</Project>
+      <Name>SwallowExceptionReferenceAssembly</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
