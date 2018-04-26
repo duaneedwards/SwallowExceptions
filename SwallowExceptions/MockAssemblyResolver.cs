@@ -48,5 +48,10 @@ public class MockAssemblyResolver : IAssemblyResolver
         throw new NotImplementedException();
     }
 
+    public void Dispose()
+    {
+        throw new NotImplementedException();
+    }
+
     public string Directory;
 }
