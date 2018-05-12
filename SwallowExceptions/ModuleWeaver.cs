@@ -1,13 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Mono.Cecil;
 using SwallowExceptions.Fody;
 
-public class ModuleWeaver
+public class ModuleWeaver:Fody.BaseModuleWeaver
 {
-    public Action<string> LogInfo { get; set; }
-
-    public ModuleDefinition ModuleDefinition { get; set; }
     public IAssemblyResolver AssemblyResolver { get; set; }
     TypeSystem typeSystem;
 
@@ -19,7 +17,7 @@ public class ModuleWeaver
         LogInfo = m => { };
     }
 
-    public void Execute()
+    public override void Execute()
     {
 //        typeSystem = ModuleDefinition.TypeSystem;
 //
@@ -34,15 +32,13 @@ public class ModuleWeaver
 //            dto.Interfaces.Add(ifDef);
 //        }
         ObjectArray = new ArrayType(ModuleDefinition.TypeSystem.Object);
-        
-        var msCoreLibDefinition = AssemblyResolver.Resolve(ModuleDefinition.AssemblyReferences.First(a => a.Name == "mscorlib"));
-        ExceptionType = ModuleDefinition.ImportReference(msCoreLibDefinition.MainModule.Types.First(x => x.Name == "Exception"));
+                    ExceptionType = ModuleDefinition.ImportReference(FindType("Exception"));
         foreach (var type in ModuleDefinition
-            .GetTypes()
-            .Where(x => (x.BaseType != null) && !x.IsEnum && !x.IsInterface))
-        {
-            ProcessType(type);
-        }
+                .GetTypes()
+                .Where(x => (x.BaseType != null) && !x.IsEnum && !x.IsInterface))
+            {
+                ProcessType(type);
+            }
     }
 
     void ProcessType(TypeDefinition type)
@@ -62,5 +58,9 @@ public class ModuleWeaver
             };
             onExceptionProcessor.Process();
         }
+    }
+    public override IEnumerable<string> GetAssembliesForScanning()
+    {
+        yield return "mscorlib";
     }
 }
