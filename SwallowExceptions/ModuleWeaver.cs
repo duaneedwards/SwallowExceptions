@@ -35,8 +35,8 @@ public class ModuleWeaver
 //        }
         ObjectArray = new ArrayType(ModuleDefinition.TypeSystem.Object);
         
-        var msCoreLibDefinition = AssemblyResolver.Resolve("mscorlib");
-        ExceptionType = ModuleDefinition.Import(msCoreLibDefinition.MainModule.Types.First(x => x.Name == "Exception"));
+        var msCoreLibDefinition = AssemblyResolver.Resolve(ModuleDefinition.AssemblyReferences.First(a => a.Name == "mscorlib"));
+        ExceptionType = ModuleDefinition.ImportReference(msCoreLibDefinition.MainModule.Types.First(x => x.Name == "Exception"));
         foreach (var type in ModuleDefinition
             .GetTypes()
             .Where(x => (x.BaseType != null) && !x.IsEnum && !x.IsInterface))

@@ -167,7 +167,7 @@ namespace SwallowExceptions.Fody
 
             return null;
         }
-
+        /*
         public static SequencePoint GetPreviousSequencePoint(this Instruction instruction)
         {
             while (true)
@@ -183,7 +183,7 @@ namespace SwallowExceptions.Fody
                     return null;
                 }
             }
-        }
+        }*/
 
         public static bool ContainsAttribute(this Collection<CustomAttribute> attributes, string attributeName)
         {
