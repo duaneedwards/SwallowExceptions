@@ -1,11 +1,11 @@
-![Icon](https://raw.githubusercontent.com/duaneedwards/SwallowExceptions/master/Icons/package_icon.png)
+![Icon](https://raw.githubusercontent.com/duaneedwards/SwallowExceptions/master/package_icon.png)
 
 Swallow Exceptions
 =================
 
 A C# Fody plugin that allows you to annotate a method with the [SwallowExceptions] attribute to have the method contents wrapped in a try / catch block.
 
-[Introduction to Fody](https://github.com/Fody/Fody/wiki/SampleUsage)
+[Introduction to Fody](https://github.com/Fody/Home/blob/master/pages/usage.md)
 
 ## Nuget
 
