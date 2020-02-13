@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net452;netstandard2.0</TargetFrameworks>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+    <Authors>Duane Edwards</Authors>
+    <Copyright>Copyright $([System.DateTime]::UtcNow.ToString(yyyy)).</Copyright>
+    <Description>A Fody plugin that allows you to annotate a method with the [SwallowExceptions] attribute to have the method contents wrapped in a try / catch block.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <!-- PackageTags are optional. Defaults to 'ILWeaving, Fody, Cecil, AOP' -->
+    <PackageTags>Swallow Exceptions, ILWeaving, Fody, Cecil, AOP</PackageTags>
+    <PackageOutputPath>$(SolutionDir)../nugets</PackageOutputPath>
+    <PackageProjectUrl>https://github.com/duaneedwards/SwallowExceptions</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/duaneedwards/SwallowExceptions/master/package_icon.png</PackageIconUrl>
+    <RootNamespace>SwallowExceptions</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Fody" Version="6.1.0" PrivateAssets="none" />
+    <PackageReference Include="FodyPackaging" Version="6.1.0" PrivateAssets="All" />
+  </ItemGroup>
+</Project>
