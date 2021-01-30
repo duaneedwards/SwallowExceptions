@@ -115,12 +115,12 @@ public class MyClass
 
 ![Icon](https://raw.githubusercontent.com/Fody/Home/master/BasicFodyAddin/package_icon.png)
 
-This is a simple solution used to illustrate how to [write a Fody addin](/pages/addin-development.md).
+This is a simple solution used to illustrate how to [write a Fody addin](https://github.com/Fody/Home/blob/master/pages/addin-development.md).
 
 
 ## Usage
 
-See also [Fody usage](/pages/usage.md).
+See also [Fody usage](https://github.com/Fody/Home/blob/master/pages/usage.md).
 
 
 ### NuGet installation
@@ -137,7 +137,7 @@ The `Install-Package Fody` is required since NuGet always defaults to the oldest
 
 ### Add to FodyWeavers.xml
 
-Add `<BasicFodyAddin/>` to [FodyWeavers.xml](/pages/configuration.md#fodyweaversxml)
+Add `<BasicFodyAddin/>` to [FodyWeavers.xml](https://github.com/Fody/Home/blob/master/pages/configuration.md#fodyweaversxml)
 
 ```xml
 <Weavers>
@@ -148,7 +148,7 @@ Add `<BasicFodyAddin/>` to [FodyWeavers.xml](/pages/configuration.md#fodyweavers
 
 ## The moving parts
 
-See [writing an addin](/pages/addin-development.md)
+See [writing an addin](https://github.com/Fody/Home/blob/master/pages/addin-development.md)
 
 ## Updating Package Version Number
 
